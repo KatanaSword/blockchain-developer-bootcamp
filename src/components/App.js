@@ -7,17 +7,22 @@ import {
   loadNetwork,
   loadAccount,
   loadTokens,
-  loadExchange
+  loadExchange,
+  loadAllOrders,
+  subscribeToEvents
 } from '../store/interactions';
 
 import Navbar from './Navbar';
 import Markets from './Markets';
+import Balance from './Balance';
+import Order from './Order';
+import OrderBook from './OrderBook';
 
 function App() {
   const dispatch = useDispatch()
 
   const loadBlockchainData = async () => {
-    // Connect ethers to blockchain
+    // Connect Ethers to blockchain
     const provider = loadProvider(dispatch)
 
     //Fetch current network's chainId (e.g. haedhat: 31337, goerli: 5)
@@ -40,7 +45,13 @@ function App() {
 
     // Load Exchange smart Contract
     const exchangeConfig = config[chainId].exchange
-    await loadExchange(provider, exchangeConfig.address, dispatch)
+    const exchange = await loadExchange(provider, exchangeConfig.address, dispatch)
+
+    // Fetch all orders: open, filled, cancelled
+    loadAllOrders(provider, exchange, dispatch)
+
+    // Listen to events
+    subscribeToEvents(exchange, dispatch)
   }
 
     useEffect(() => {
@@ -57,9 +68,9 @@ function App() {
 
           <Markets />
 
-          {/* Balance */}
+          <Balance />
 
-          {/* Order */} 
+          <Order /> 
 
         </section>
         <section className='exchange__section--right grid'>
@@ -70,7 +81,7 @@ function App() {
 
           {/* Trades */}
 
-          {/* OrderBook */}
+          <OrderBook />
 
         </section>
       </main>

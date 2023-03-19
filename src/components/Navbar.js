@@ -31,7 +31,7 @@ const Navbar = () => {
           <h1>SAH Token Exchange</h1>
         </div>
 
-        <div className='exchange__header--network flex'>
+        <div className='exchange__header--networks flex'>
           <img src={eth} alt="ETH Logo" className='Eth Logo' />
 
           {chainId && (
@@ -72,7 +72,7 @@ const Navbar = () => {
           )}
         </div>
       </div>
-    )
+    );
 }
 
 export default Navbar;
