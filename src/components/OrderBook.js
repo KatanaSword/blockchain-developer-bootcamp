@@ -25,7 +25,7 @@ const OrderBook = () => {
             <div className="flex">
                 
                 {!orderBook || orderBook.sellOrders.length === 0 ? (
-                   <p className='flex-center'>No Sell Order</p>
+                   <p className='flex-center'>No Sell Orders</p>
                 ) : (
                     <table className='exchange__orderbook--sell'>
                         <caption>Selling</caption>
@@ -54,7 +54,6 @@ const OrderBook = () => {
                     </table>
                 )}
                 
-
                 <div className='divider'></div>
                 
                 {!orderBook || orderBook.buyOrders.length === 0 ? (
@@ -75,11 +74,11 @@ const OrderBook = () => {
 
                             {orderBook && orderBook.buyOrders.map((order, index) => {
                                 return (
-                                <tr key={index} onClick={() => fillOrderHandler(order)}>
-                                    <td>{order.token0Amount}</td>
-                                    <td style={{ color: `${order.orderTypeClass}` }}>{order.tokenPrice}</td>
-                                    <td>{order.token1Amount}</td>
-                                </tr>
+                                    <tr key={index} onClick={() => fillOrderHandler(order)}>
+                                        <td>{order.token0Amount}</td>
+                                        <td style={{ color: `${order.orderTypeClass}` }}>{order.tokenPrice}</td>
+                                        <td>{order.token1Amount}</td>
+                                    </tr>
                                 )
                             })}
                             

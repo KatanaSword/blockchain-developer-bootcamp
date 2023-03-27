@@ -66,7 +66,7 @@ const MyTransactions = () => {
                           <tr key={index}>
                               <td style={{ color: `${order.orderTypeClass}` }}>{order.token0Amount}</td>
                               <td>{order.tokenPrice}</td>
-                              <td><button className='button--sm' onClick={() => cancelHandler()}>Cancel</button></td>
+                              <td><button className='button--sm' onClick={() => cancelHandler(order)}>Cancel</button></td>
                           </tr>
                       )
                   })}
@@ -113,7 +113,7 @@ const MyTransactions = () => {
           </div>
         )}
       </div>
-    )
+    );
 }
   
   export default MyTransactions;
