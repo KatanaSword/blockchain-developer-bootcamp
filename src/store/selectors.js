@@ -95,7 +95,7 @@ const decorateOrder = (order, tokens) => {
 
     // Note: DApp should be considered token0, mETH is considered token1
     // Example: Giving mETH in exchange for SAH
-    if (order.tokenGive === tokens[1].address) {
+    if (order.tokenGive === tokens[0].address) {
         token0Amount = order.amountGive // The amount of SAH we are giving
         token1Amount = order.amountGet // The amount of mETH we want...
     } else {

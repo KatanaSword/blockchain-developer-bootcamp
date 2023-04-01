@@ -6,7 +6,7 @@ const tokens = (n) => {
 }
 
 describe('Exchange', () => {
-    let deployer, feeAccount, exchange
+    let deployer, feeAccount, user1, user2, exchange, token1, token2
 
     const feePercent = 10
 
